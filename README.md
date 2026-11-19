@@ -35,6 +35,3 @@ The [full guide](docs/guide.md) covers scanners, backups, styles, the optional [
 
 Needs Node.js and Go. Run `build.cmd`; the programs land in `dist`.
 
-## License
-
-The code is under the [MIT License](LICENSE). The logo and the product pictures are not; see [picture credits](docs/image-credits.md).
