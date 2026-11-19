@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <path id="s" d="M0-1C.07-.22.22-.07 1 0 .22.07.07.22 0 1-.07.22-.22.07-1 0-.22-.07-.07-.22 0-1z"/>
+    <radialGradient id="orb" cx=".38" cy=".3" r=".8">
+      <stop offset="0" stop-color="#fff"/>
+      <stop offset=".34" stop-color="#d9ecff"/>
+      <stop offset=".72" stop-color="#b9a8ff"/>
+      <stop offset="1" stop-color="#ff9fe0"/>
+    </radialGradient>
+  </defs>
+  <g fill="none" stroke="#fff" stroke-width="1.5">
+    <circle cx="1490" cy="-30" r="250" stroke-opacity=".75"/>
+    <circle cx="1490" cy="-30" r="350" stroke-opacity=".55"/>
+    <circle cx="1490" cy="-30" r="470" stroke-opacity=".6" stroke-dasharray="2 12" stroke-linecap="round"/>
+    <circle cx="200" cy="1020" r="250" stroke-opacity=".7"/>
+    <circle cx="200" cy="1020" r="380" stroke-opacity=".6" stroke-dasharray="2 12" stroke-linecap="round"/>
+  </g>
+  <circle cx="200" cy="1020" r="150" fill="url(#orb)"/>
+  <g fill="#fff">
+    <use href="#s" transform="translate(230 120) scale(34)"/>
+    <use href="#s" transform="translate(760 104) scale(22)"/>
+    <use href="#s" transform="translate(1180 170) scale(14)"/>
+    <use href="#s" transform="translate(640 900) scale(30)"/>
+    <use href="#s" transform="translate(1250 870) scale(38)"/>
+    <use href="#s" transform="translate(1520 760) scale(20)"/>
+    <use href="#s" transform="translate(70 640) scale(18)"/>
+  </g>
+  <g fill="#ff6ec2">
+    <use href="#s" transform="translate(470 80) scale(12)"/>
+    <use href="#s" transform="translate(900 950) scale(13)"/>
+  </g>
+  <g fill="#1ed8ef">
+    <use href="#s" transform="translate(1010 60) scale(12)"/>
+    <use href="#s" transform="translate(1110 950) scale(10)"/>
+    <use href="#s" transform="translate(480 830) scale(11)"/>
+  </g>
+</svg>

@@ -1,0 +1,16 @@
+# The OBK's page. Everything here fits the free plan: the till sends at most one small update every five minutes.
+name = "amk-bar"
+main = "src/worker.js"
+compatibility_date = "2026-10-01"
+
+[assets]
+directory = "public"
+run_worker_first = ["/api/*"]
+
+[[durable_objects.bindings]]
+name = "BAR"
+class_name = "Bar"
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["Bar"]

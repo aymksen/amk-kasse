@@ -1,0 +1,24 @@
+# Tools and packages, fetched again by build.cmd and npm
+.tools/
+node_modules/
+
+# Build output
+dist/
+server/internal/webui/dist/
+
+# The till's data: sales, shifts, backups, logs and the browser profile
+data/
+data-*/
+*.db
+*.db-shm
+*.db-wal
+*.log
+
+# Local only
+.claude/
+productimgs/
+web/src/assets/six-seven.mp3
+dashboard/.wrangler/
+dashboard/.dev.vars
+.playwright-mcp/
+docs/specs/

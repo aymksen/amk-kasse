@@ -1,0 +1,56 @@
+/* Hell: the same machine in a light casing, with a calculator's LCD where the LED was. The OBK
+   area already is paper, so it stays as it is. */
+:root[data-theme='light'],
+:root[data-theme='light'] .machine {
+  --bg: #ddd5c5;
+  --surface: #ece6d9;
+  --surface-2: #e3dccd;
+  --surface-3: #d5ccba;
+  --line: #bfb4a0;
+  --field: #fffdf7;
+  --text: #241e16;
+  --muted: #5c5243;
+  --accent: #f5a623;
+  --accent-hover: #ffb83f;
+  --accent-lip: #b0700c;
+  --accent-text: #8f5200;
+  --on-accent: #241703;
+  --focus: #241e16;
+  --key: #faf6ec;
+  --key-hover: #fffdf6;
+  --key-lip: #ab9e85;
+  --key-edge: rgb(255 255 255 / 0.8);
+  --good: #18713f;
+  --good-bg: #d3ead2;
+  --bad: #b5301b;
+  --bad-bg: #f6d9cf;
+  --warn: #7f4f02;
+  --warn-bg: #f4e3b8;
+  --warn-hover: #efd99f;
+  --chart: #b4730f;
+  color-scheme: light;
+}
+
+:root[data-theme='light'] {
+  --well: #cfc6b4;
+  --paper: #fffdf6;
+  --led-bg: #d3d9c2;
+  --led-amber: #23281b;
+  --led-amber-off: rgb(35 40 27 / 0.06);
+  --led-green: #0f5a34;
+  --led-green-off: rgb(15 90 52 / 0.06);
+  --led-red: #a12a16;
+  --led-red-off: rgb(161 42 22 / 0.06);
+  --dent: inset 0 2px 0 #a99d87, 0 0 0 1px #a99d87;
+  --dent-edge: 0 1px 0 1px rgb(255 255 255 / 0.55);
+  --seam: #b3a892;
+  --seam-light: rgb(255 255 255 / 0.5);
+  --tile-ink: #221c15;
+  --tile-tag: rgb(255 255 255 / 0.62);
+  --backdrop: rgb(58 48 34 / 0.55);
+  --modal-edge: 1px solid #8f8470;
+  --modal-shadow: none;
+  --toast-bad: #8f2412;
+  --toast-good: #125c33;
+  --tear: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='7'%3E%3Cpath d='M0 0h14L7 7z' fill='%23fffdf6'/%3E%3C/svg%3E");
+}

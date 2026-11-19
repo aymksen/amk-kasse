@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="de" translate="no">
+  <head>
+    <meta charset="utf-8" />
+    <!-- The till has its own DE/EN switch, so Edge must never offer to translate it. -->
+    <meta name="google" content="notranslate" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="dark" />
+    <title>AMK Kasse</title>
+    <script>
+      // Before the first paint, so a light style does not flash dark on start.
+      try {
+        var style = localStorage.getItem('amk-style');
+        var colors = (localStorage.getItem('amk-glass') || '').split('-');
+        if (style && style !== 'machine') document.documentElement.dataset.theme = style;
+        if (style === 'glass' && colors[1]) {
+          document.documentElement.dataset.mode = colors[0];
+          document.documentElement.dataset.tint = colors[1];
+        }
+      } catch (e) {}
+    </script>
+    <link rel="icon" type="image/png" href="/src/assets/favicon.png" />
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

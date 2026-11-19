@@ -1,0 +1,85 @@
+/* Every animation here plays once and stops, and only transform and opacity move. The browser can do those two
+   without redrawing the page, so nothing is left to do when the movement ends. The seasons in src/moments may loop,
+   because they run for a few weeks a year and only on their own layer.
+   Windows' own "Animationseffekte" switch turns all of it off, see the end of app.css. */
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(8px); }
+}
+@keyframes fade {
+  from { opacity: 0; }
+}
+@keyframes pop {
+  from { opacity: 0; transform: scale(0.95); }
+}
+@keyframes logo-drop {
+  0% { opacity: 0; transform: translateY(-40px) rotate(-9deg) scale(0.88); }
+  58% { opacity: 1; transform: translateY(6px) rotate(3deg) scale(1.03); }
+  80% { transform: translateY(-2px) rotate(-1deg) scale(1); }
+  100% { transform: none; }
+}
+@keyframes print {
+  from { transform: translateY(-72%); }
+}
+@keyframes stamp-down {
+  0% { opacity: 0; transform: rotate(-13deg) scale(2); }
+  55% { opacity: 1; transform: rotate(-2deg) scale(0.92); }
+  100% { transform: rotate(-4deg) scale(1); }
+}
+@keyframes fly-in {
+  0% { opacity: 0; transform: translate(72vw, -80px) rotate(-10deg); }
+  14% { opacity: 1; }
+  60% { transform: translate(-12px, 8px) rotate(1deg); }
+  80% { transform: translate(5px, -6px) rotate(-4deg); }
+  100% { transform: rotate(-2deg); }
+}
+@keyframes greet {
+  0% { opacity: 0; transform: rotate(-12deg) scale(0.7); }
+  42% { opacity: 1; transform: rotate(5deg) scale(1.04); }
+  68% { transform: rotate(-6deg) scale(1); }
+  86% { transform: rotate(1deg); }
+  100% { transform: rotate(-2deg); }
+}
+@keyframes swing {
+  0% { transform: translate(-100%, -50%) rotate(-12deg); }
+  30% { transform: translate(-100%, -50%) rotate(7deg); }
+  54% { transform: translate(-100%, -50%) rotate(-7deg); }
+  74% { transform: translate(-100%, -50%) rotate(1.5deg); }
+  89% { transform: translate(-100%, -50%) rotate(-3.5deg); }
+  100% { transform: translate(-100%, -50%) rotate(-2deg); }
+}
+
+/* Start screen: the badge lands on the sheet, the sheet comes up to meet it. */
+.start .logo { animation: logo-drop 640ms ease-out; }
+.start .sheet { animation: rise 340ms ease-out 100ms backwards; }
+.start .stack { animation: fade 200ms ease-out; }
+
+/* Changing screen. */
+.till .content > :not(.backdrop) { animation: rise 170ms ease-out; }
+.admin .page > :not(.backdrop) { animation: rise 170ms ease-out; }
+
+/* Selling: a new row slides in, and when the sale is paid the receipt prints and gets its stamp.
+   Leave the quantity alone: a jump on every repeat tap costs too much on a weak PC during a rush. */
+.receipt .line { animation: rise 130ms ease-out; }
+.receipt.printed { animation: print 320ms cubic-bezier(0.2, 0.8, 0.2, 1); }
+.receipt .stamp { animation: stamp-down 300ms ease-out 140ms backwards; }
+.receipt .done dl,
+.receipt .done p { animation: fade 240ms ease-out 240ms backwards; }
+
+/* Lending: the helicopter flies in and settles. */
+.sticker.heli { animation: fly-in 1000ms cubic-bezier(0.25, 0.7, 0.3, 1); }
+
+/* End of the shift: the farmer waves, then the words arrive. */
+.sticker.farmer { animation: greet 820ms ease-out; }
+.thanks h1 { animation: rise 280ms ease-out 240ms backwards; }
+.thanks p { animation: rise 280ms ease-out 320ms backwards; }
+.thanks .btn { animation: rise 280ms ease-out 400ms backwards; }
+
+/* OBK login: the tin sign swings on its nail. */
+.wrap > .sign { animation: swing 1250ms ease-out; transform-origin: 50% 0; }
+.wrap > .panel { animation: rise 280ms ease-out; }
+
+/* Dialogs and messages. */
+.backdrop { animation: fade 120ms ease-out; }
+.backdrop > .modal { animation: pop 150ms ease-out; }
+.toast { animation: rise 180ms ease-out; }

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <path id="s" d="M0-1C.07-.22.22-.07 1 0 .22.07.07.22 0 1-.07.22-.22.07-1 0-.22-.07-.07-.22 0-1z"/>
+  </defs>
+  <g fill="none" stroke="#fff" stroke-width="2.5">
+    <ellipse cx="1320" cy="90" rx="560" ry="180" transform="rotate(-16 1320 90)" stroke-opacity=".85"/>
+    <ellipse cx="1320" cy="90" rx="720" ry="250" transform="rotate(-16 1320 90)" stroke-opacity=".5"/>
+    <ellipse cx="170" cy="930" rx="520" ry="160" transform="rotate(-16 170 930)" stroke-opacity=".85"/>
+    <ellipse cx="170" cy="930" rx="680" ry="230" transform="rotate(-16 170 930)" stroke-opacity=".5"/>
+  </g>
+  <g fill="#fff">
+    <use href="#s" transform="translate(1012 214) scale(30)"/>
+    <use href="#s" transform="translate(1086 176) scale(12)"/>
+    <use href="#s" transform="translate(1496 318) scale(20)"/>
+    <use href="#s" transform="translate(420 760) scale(24)"/>
+    <use href="#s" transform="translate(620 820) scale(12)"/>
+    <use href="#s" transform="translate(96 640) scale(16)"/>
+  </g>
+</svg>

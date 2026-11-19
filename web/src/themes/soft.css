@@ -1,0 +1,93 @@
+/* What Glassmorphism and Y2K share: rounder shapes and no printer paper. A style still
+   only changes the look, so everything stays where it is.
+
+   None of them use backdrop-filter. It redraws everything behind a panel on every frame, which a
+   weak PC cannot afford. Each wallpaper is already soft, so there is nothing sharp left to blur,
+   and a tinted panel with a bright edge looks the same for almost no work. --solid is for whatever
+   sits on top of moving content, where a see-through panel would be unreadable. */
+
+:root:is([data-theme='glass'], [data-theme='y2k']) {
+  --radius: 14px;
+  --radius-lg: 24px;
+  --modal-shadow: 0 18px 44px -14px rgb(0 0 0 / 0.5);
+}
+
+:root:is([data-theme='glass'], [data-theme='y2k']) :is(.chip, .tag, .meter, .level, .track, .fill, .tabs, .marker, .tab, .step, span.count) { border-radius: 999px; }
+:root:is([data-theme='glass'], [data-theme='y2k']) :is(.input, .option, .item, .results button, .plate, .box, .tip) { border-radius: 14px; }
+:root:is([data-theme='glass'], [data-theme='y2k']) :is(.card, .stats, .slip, .led, .results) { border-radius: 22px; }
+:root:is([data-theme='glass'], [data-theme='y2k']) button.tile { border-radius: 20px; }
+:root:is([data-theme='glass'], [data-theme='y2k']) .window { margin: 0 -2px; border-radius: 14px; box-shadow: none; }
+:root:is([data-theme='glass'], [data-theme='y2k']) .link { border-radius: 999px; }
+:root:is([data-theme='glass'], [data-theme='y2k']) nav.side { padding-right: 12px; }
+:root:is([data-theme='glass'], [data-theme='y2k']) .picker .swatch { border-radius: 10px; }
+:root:is([data-theme='glass'], [data-theme='y2k']) .picker .swatch i { border-radius: 50%; }
+:root:is([data-theme='glass'], [data-theme='y2k']) :is(.menu, .modal) { border-radius: var(--radius-lg); }
+:root:is([data-theme='glass'], [data-theme='y2k']) .picker .menu { width: 216px; }
+/* The form inside scrolls, and its corners would stick out of the rounder frame. */
+:root:is([data-theme='glass'], [data-theme='y2k']) .modal { overflow: hidden; }
+/* Reaches the bottom of the page, so rows do not show underneath. */
+:root:is([data-theme='glass'], [data-theme='y2k']) .foot { bottom: -20px; }
+
+/* Paper and its printer belong to the machine, not to these. In them the receipt is a whole window,
+   so it starts inside the tray and its top edge is not cut off. */
+:root:is([data-theme='glass'], [data-theme='y2k']) .tray { padding-top: 3px; }
+:root:is([data-theme='glass'], [data-theme='y2k']) .receipt { margin-top: 0; }
+:root:is([data-theme='glass'], [data-theme='y2k']) .slip::after { display: none; }
+:root:is([data-theme='glass'], [data-theme='y2k']) .slot { background: transparent; }
+
+:root:is([data-theme='glass'], [data-theme='y2k']) .admin .page h1,
+:root:is([data-theme='glass'], [data-theme='y2k']) .admin .page header.spread { border-bottom: 1px solid var(--line); }
+:root:is([data-theme='glass'], [data-theme='y2k']) .admin .page header.spread h1 { border-bottom: 0; }
+
+:root:is([data-theme='glass'], [data-theme='y2k']) :is(.modal, .menu, .results, .tip, .foot, .modal .actions) { background: var(--solid); }
+:root:is([data-theme='glass'], [data-theme='y2k']) .toast { border: 1px solid var(--line); background: var(--solid); box-shadow: var(--modal-shadow); color: var(--text); }
+:root:is([data-theme='glass'], [data-theme='y2k']) .toast.bad { border: 2px solid var(--bad); background: var(--solid); color: var(--bad); }
+:root:is([data-theme='glass'], [data-theme='y2k']) .toast.good { border: 2px solid var(--good); background: var(--solid); color: var(--good); }
+:root:is([data-theme='glass'], [data-theme='y2k']) .results button:hover { background: var(--surface-3); }
+
+/* Figures share one panel here, because a tile on the old line colour would show through. */
+:root:is([data-theme='glass'], [data-theme='y2k']) .stats { border-color: var(--line); background: var(--surface); }
+:root:is([data-theme='glass'], [data-theme='y2k']) div.tile { background: transparent; box-shadow: 1px 0 0 var(--line), 0 1px 0 var(--line); }
+
+/* These fonts have no narrow cut, so long names get a smaller size to stay on one line. */
+@media (max-width: 1499px) {
+  :root:is([data-theme='glass'], [data-theme='y2k']) .pictured .name { font-size: 0.8125rem; letter-spacing: -0.015em; }
+  :root:is([data-theme='glass'], [data-theme='y2k']) .pictured .long { font-size: 0.75rem; letter-spacing: -0.02em; }
+}
+@media (min-width: 1500px) {
+  :root:is([data-theme='glass'], [data-theme='y2k']) .pictured .name { font-size: 1.0625rem; letter-spacing: -0.015em; }
+  :root:is([data-theme='glass'], [data-theme='y2k']) .pictured .long { font-size: 0.9375rem; }
+}
+
+/* Glassmorphism: panels float over the wallpaper instead of filling the screen. */
+:root[data-theme='glass'] body { background: var(--wallpaper); }
+:root[data-theme='glass'] :is(.page, nav.side) { background: transparent; }
+:root[data-theme='glass'] :is(.register, section.detail, section.right) { margin: 10px 10px 10px 0; border-radius: 28px; background: var(--surface); box-shadow: var(--rim), var(--lift); }
+:root[data-theme='glass'] nav.side { margin: 10px 0 10px 10px; border-radius: 28px; background: var(--surface); box-shadow: var(--rim), var(--lift); }
+:root[data-theme='glass'] .dock { min-height: 60px; margin: 0 10px 10px; padding: 6px 10px; gap: 8px; border-radius: 30px; box-shadow: var(--rim), var(--lift); }
+:root[data-theme='glass'] :is(.card, .stats) { box-shadow: var(--rim), var(--lift); border-color: transparent; }
+:root[data-theme='glass'] .chip { border-color: transparent; background: var(--key); box-shadow: var(--rim); }
+:root[data-theme='glass'] .chip:hover { background: var(--key-hover); }
+:root[data-theme='glass'] .input { border-color: var(--line); }
+:root[data-theme='glass'] .input:focus { border-color: var(--focus); outline: 2px solid var(--focus); outline-offset: 0; }
+:root[data-theme='glass'] .slip { box-shadow: var(--rim); }
+:root[data-theme='glass'] .led { box-shadow: var(--dent); }
+
+:root[data-theme='glass'] :is(.btn, .keycap) { box-shadow: var(--rim), 0 2px 0 var(--lip); }
+:root[data-theme='glass'] .btn { border-radius: 999px; }
+:root[data-theme='glass'] :is(.btn, .keycap):active:not(:disabled) { box-shadow: var(--rim); transform: scale(0.97); }
+:root[data-theme='glass'] .btn:disabled { background: var(--surface-2); box-shadow: var(--rim); }
+:root[data-theme='glass'] .btn.ghost,
+:root[data-theme='glass'] .btn.ghost:active:not(:disabled) { box-shadow: none; transform: none; }
+/* Gel: one soft highlight on the colour. */
+:root[data-theme='glass'] .btn.primary:not(:disabled) { background-image: linear-gradient(rgb(255 255 255 / 0.18), rgb(255 255 255 / 0)); box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.55), 0 2px 0 var(--lip); }
+
+@media (orientation: portrait) {
+  :root[data-theme='glass'] :is(section.detail, section.right) { margin: 0 10px 10px; }
+}
+
+/* No soft shadow on the product keys. There are 41 of them, and they scroll. */
+:root[data-theme='glass'] button.tile { box-shadow: var(--rim), 0 2px 0 var(--lip); }
+:root[data-theme='glass'] button.tile:active { box-shadow: var(--rim); transform: scale(0.97); }
+
+:root[data-theme='glass'] .marker { box-shadow: var(--rim); }

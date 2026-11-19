@@ -1,0 +1,154 @@
+/* Pop: flat bright colour, thick black outlines and hard shadows, in the same places as always.
+   Hard shadows have no blur, so this is as cheap to draw as the default. */
+:root[data-theme='pop'],
+:root[data-theme='pop'] .machine {
+  --bg: #ffd23f;
+  --surface: #ffffff;
+  --surface-2: #fff1b8;
+  --surface-3: #ffe27a;
+  --line: #000000;
+  --field: #ffffff;
+  --text: #000000;
+  --muted: #3b3728;
+  --accent: #2bd66f;
+  --accent-hover: #55e38d;
+  --accent-lip: #000000;
+  --accent-text: #000000;
+  --on-accent: #000000;
+  --focus: #000000;
+  --key: #ffffff;
+  --key-hover: #fff1b8;
+  --key-lip: #000000;
+  --key-edge: transparent;
+  --good: #0a6434;
+  --good-bg: #b8f3cc;
+  --bad: #a81708;
+  --bad-bg: #ffc7c0;
+  --warn: #6d4200;
+  --warn-bg: #ffe08a;
+  --warn-hover: #ffd35c;
+  --chart: #2ec4b6;
+  color-scheme: light;
+}
+
+:root[data-theme='pop'] .ledger {
+  --bg: #ffffff;
+  --surface: #ffffff;
+  --surface-2: #fff1b8;
+  --surface-3: #ffe27a;
+  --line: #000000;
+  --field: #ffffff;
+  --text: #000000;
+  --muted: #45413a;
+  --accent: #2bd66f;
+  --accent-hover: #55e38d;
+  --accent-lip: #000000;
+  --accent-text: #000000;
+  --on-accent: #000000;
+  --focus: #000000;
+  --key: #ffffff;
+  --key-hover: #fff1b8;
+  --key-lip: #000000;
+  --key-edge: transparent;
+  --good: #0a6434;
+  --good-bg: #b8f3cc;
+  --bad: #a81708;
+  --bad-bg: #ffc7c0;
+  --warn: #6d4200;
+  --warn-bg: #ffe08a;
+  --chart: #2ec4b6;
+}
+
+:root[data-theme='pop'] {
+  --sans: 'Space Grotesk Variable', 'Segoe UI', system-ui, sans-serif;
+  --display: var(--sans);
+  --narrow: var(--sans);
+  --mono: var(--sans);
+  --hair: 2px;
+  --well: #ffffff;
+  --paper: #ffffff;
+  --ink: #000000;
+  --ink-soft: #3b3728;
+  --rule: #000000;
+  --led-bg: #000000;
+  --led-amber: #ffd23f;
+  --led-amber-off: rgb(255 210 63 / 0.1);
+  --led-green: #2bd66f;
+  --led-green-off: rgb(43 214 111 / 0.1);
+  --led-red: #ff6b6b;
+  --led-red-off: rgb(255 107 107 / 0.1);
+  --dent: 0 0 0 3px #000;
+  --dent-edge: 3px 3px 0 3px #000;
+  --seam: #000000;
+  --seam-light: transparent;
+  --tile-ink: #000000;
+  --tile-tag: #000000;
+  --backdrop: rgb(0 0 0 / 0.6);
+  --modal-edge: 3px solid #000;
+  --modal-shadow: 6px 6px 0 #000;
+  --toast-bad: #7a1005;
+  --toast-good: #074a26;
+  --tab-bg: #000000;
+  --tab-ink: #ffd23f;
+}
+
+:root[data-theme='pop'] * { border-radius: 0 !important; }
+
+:root[data-theme='pop'] .btn,
+:root[data-theme='pop'] .keycap { border: 3px solid #000; box-shadow: 3px 3px 0 #000; }
+:root[data-theme='pop'] .btn:active:not(:disabled),
+:root[data-theme='pop'] .keycap:active:not(:disabled) { box-shadow: none; transform: translate(3px, 3px); }
+:root[data-theme='pop'] .btn:disabled { box-shadow: none; }
+:root[data-theme='pop'] .btn.ghost,
+:root[data-theme='pop'] .btn.ghost:active:not(:disabled) { border-color: transparent; box-shadow: none; transform: none; }
+
+:root[data-theme='pop'] .chip,
+:root[data-theme='pop'] .input,
+:root[data-theme='pop'] .card,
+:root[data-theme='pop'] .stats { border-width: 3px; }
+:root[data-theme='pop'] .card,
+:root[data-theme='pop'] .stats { box-shadow: 4px 4px 0 #000; }
+:root[data-theme='pop'] .input:focus { border-color: var(--focus); outline: 3px solid var(--focus); outline-offset: 0; }
+:root[data-theme='pop'] .table thead th { background: #000; color: #fff; }
+/* The cash book's double rule turns grey at this weight, and black grid lines would drown the bars. */
+:root[data-theme='pop'] .page h1,
+:root[data-theme='pop'] .page header.spread { border-bottom-style: solid; }
+:root[data-theme='pop'] line.grid { stroke: #cfcfcf; }
+:root[data-theme='pop'] .results { background: #fff; border-width: 3px; box-shadow: 4px 4px 0 #000; }
+:root[data-theme='pop'] .results button:hover { background: var(--surface-3); }
+/* This font runs wider, so a long subtitle wraps instead of pushing the page's button onto its own line. */
+:root[data-theme='pop'] .page header.spread { flex-wrap: nowrap; }
+
+:root[data-theme='pop'] .slip { box-shadow: 0 0 0 3px #000, 4px 4px 0 3px #000; }
+:root[data-theme='pop'] .start .center::before { display: none; }
+:root[data-theme='pop'] .slip::after { display: none; }
+
+:root[data-theme='pop'] .tabs,
+:root[data-theme='pop'] .ledger .tabs { background: #fff; box-shadow: var(--dent), var(--dent-edge); }
+:root[data-theme='pop'] .marker { box-shadow: none; }
+
+/* Several class names repeat across screens (the OBK figures are .tile too), so these name the element. */
+:root[data-theme='pop'] button.tile { border: 3px solid #000; box-shadow: 4px 4px 0 #000; }
+:root[data-theme='pop'] button.tile:active { box-shadow: none; transform: translate(4px, 4px); }
+:root[data-theme='pop'] button.tile .tag { color: #ffd23f; }
+/* This font is wider and has no narrow cut, so long names get a smaller size to stay on one line. */
+@media (max-width: 1499px) {
+  :root[data-theme='pop'] .pictured .name { font-size: 0.8125rem; letter-spacing: -0.015em; }
+  :root[data-theme='pop'] .pictured .long { font-size: 0.75rem; }
+}
+@media (min-width: 1500px) {
+  :root[data-theme='pop'] .pictured .name { font-size: 1.0625rem; letter-spacing: -0.015em; }
+  :root[data-theme='pop'] .pictured .long { font-size: 0.9375rem; }
+}
+:root[data-theme='pop'] .window { box-shadow: 0 0 0 2px #000; }
+:root[data-theme='pop'] span.count { background: #ffd23f; box-shadow: 0 0 0 3px #000; color: #000; }
+:root[data-theme='pop'] div.grid { padding: 1px 6px 6px 1px; }
+
+:root[data-theme='pop'] .register { background: var(--bg); box-shadow: inset 3px 0 0 #000; }
+:root[data-theme='pop'] .dock { background: var(--bg); box-shadow: inset 0 3px 0 #000; }
+:root[data-theme='pop'] nav.side { border-right: 3px solid #000; }
+:root[data-theme='pop'] button.box { --muted: #ffd23f; }
+:root[data-theme='pop'] button.box.active { outline: 3px solid #ffd23f; outline-offset: -7px; }
+
+:root[data-theme='pop'] .toast { border-width: 3px; box-shadow: 4px 4px 0 #000; }
+:root[data-theme='pop'] ::-webkit-scrollbar-thumb { background: #000; background-clip: padding-box; }

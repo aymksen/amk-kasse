@@ -1,0 +1,179 @@
+/* Glassmorphism: frosted panes with thin bright edges and gel buttons, over a wallpaper that fades
+   from black or white into one colour. It comes dark or light, in eight colours. Each colour is a
+   finished set, so whichever one is picked, text stays readable: the panes carry a tint of their
+   own and never depend on what is behind them. */
+
+/* Dark */
+:root[data-theme='glass'],
+:root[data-theme='glass'] .machine,
+:root[data-theme='glass'] .ledger {
+  --bg: #0b0a14;
+  --surface: rgb(var(--panel) / 0.55);
+  --surface-2: rgb(255 255 255 / 0.08);
+  --surface-3: rgb(255 255 255 / 0.15);
+  --line: rgb(255 255 255 / 0.16);
+  --field: rgb(10 8 24 / 0.6);
+  --solid: var(--pane);
+  --text: #ffffff;
+  --muted: #dcd9ee;
+  --accent: var(--pick);
+  --accent-hover: var(--pick-2);
+  --accent-lip: var(--pick-lip);
+  --accent-text: var(--pick-text);
+  --on-accent: #04140d;
+  --focus: var(--pick-text);
+  --key: rgb(var(--panel) / 0.72);
+  --key-hover: rgb(255 255 255 / 0.18);
+  --key-lip: rgb(0 0 0 / 0.4);
+  --key-edge: rgb(255 255 255 / 0.22);
+  --good: #72f0c0;
+  --good-bg: rgb(8 66 50 / 0.86);
+  --bad: #ffa596;
+  --bad-bg: rgb(86 24 20 / 0.86);
+  --warn: #ffd98a;
+  --warn-bg: rgb(70 48 8 / 0.86);
+  --warn-hover: rgb(92 64 12 / 0.9);
+  --chart: var(--bars);
+  color-scheme: dark;
+}
+
+:root[data-theme='glass'] {
+  --sans: 'Manrope Variable', 'Segoe UI', system-ui, sans-serif;
+  --display: var(--sans);
+  --narrow: var(--sans);
+  --mono: var(--sans);
+  --wallpaper: radial-gradient(125% 125% at 50% 10%, #000 40%, var(--hue) 100%);
+  --rim: inset 0 1px 0 rgb(255 255 255 / 0.24), inset 0 0 0 1px rgb(255 255 255 / 0.1);
+  --lift: 0 14px 30px -16px rgb(0 0 0 / 0.75);
+  --well: rgb(0 0 0 / 0.32);
+  --paper: rgb(var(--panel) / 0.67);
+  --ink: #ffffff;
+  --ink-soft: #dcd9ee;
+  --rule: rgb(255 255 255 / 0.2);
+  --cream: #0b0a14;
+  --led-bg: rgb(0 0 0 / 0.46);
+  --led-amber: var(--pick-text);
+  --led-amber-off: rgb(255 255 255 / 0.05);
+  --led-green: #72f0c0;
+  --led-green-off: rgb(114 240 192 / 0.07);
+  --led-red: #ffa596;
+  --led-red-off: rgb(255 165 150 / 0.07);
+  --dent: inset 0 1px 2px rgb(0 0 0 / 0.6), 0 0 0 1px rgb(255 255 255 / 0.1);
+  --dent-edge: 0 0 0 0 transparent;
+  --seam: transparent;
+  --seam-light: transparent;
+  --tile-ink: #ffffff;
+  --tile-tag: rgb(0 0 0 / 0.42);
+  --backdrop: rgb(6 4 16 / 0.62);
+  --modal-edge: 1px solid rgb(255 255 255 / 0.2);
+  --tab-bg: rgb(255 255 255 / 0.16);
+  --tab-ink: #ffffff;
+  --toast-bad: #ffa596;
+  --toast-good: #72f0c0;
+  --sheen: linear-gradient(-75deg, rgb(255 255 255 / 0.02), rgb(255 255 255 / 0.14), rgb(255 255 255 / 0.02));
+  --sheen-tile: linear-gradient(-75deg, rgb(255 255 255 / 0) 34%, rgb(255 255 255 / 0.1) 50%, rgb(255 255 255 / 0) 66%);
+  --glass-button: inset 0 0 0 1px rgb(255 255 255 / 0.16), inset 0 1.5px 1.5px rgb(255 255 255 / 0.28), inset 0 -2px 2px rgb(0 0 0 / 0.25), 0 3px 3px -2px rgb(0 0 0 / 0.7);
+  --glass-button-down: inset 0 0 0 1px rgb(255 255 255 / 0.16), inset 0 2px 3px rgb(0 0 0 / 0.5);
+  --glow-face: linear-gradient(100deg, var(--pick), var(--pick-2));
+  --glow: inset 0 0 8px 1px rgb(255 255 255 / 0.4), inset 0 1px 0 rgb(255 255 255 / 0.6), 0 0 16px 1px rgb(var(--pick-glow) / 0.5);
+  --glow-down: inset 0 0 8px 1px rgb(255 255 255 / 0.25), 0 0 8px rgb(var(--pick-glow) / 0.45);
+  --bar: rgb(255 255 255 / 0.07);
+  --code-sum: #86efac;
+  --code-qty: #e6e0ff;
+  --code-line: #c4c0dc;
+  --code-comment: #d4d0e8;
+}
+
+/* Light */
+:root[data-theme='glass'][data-mode='light'],
+:root[data-theme='glass'][data-mode='light'] .machine,
+:root[data-theme='glass'][data-mode='light'] .ledger {
+  --bg: #f4f8fd;
+  --surface: rgb(var(--panel) / 0.66);
+  --surface-2: rgb(var(--panel) / 0.5);
+  --surface-3: rgb(30 40 70 / 0.1);
+  --line: rgb(30 40 70 / 0.14);
+  --field: rgb(255 255 255 / 0.86);
+  --text: #0c1524;
+  --muted: #384358;
+  --on-accent: #ffffff;
+  --key: rgb(255 255 255 / 0.62);
+  --key-hover: rgb(255 255 255 / 0.86);
+  --key-lip: rgb(30 40 70 / 0.16);
+  --key-edge: #ffffff;
+  --good: #09602f;
+  --good-bg: rgb(52 199 89 / 0.2);
+  --bad: #bb1f18;
+  --bad-bg: rgb(255 59 48 / 0.14);
+  --warn: #7c4d00;
+  --warn-bg: rgb(255 204 0 / 0.3);
+  --warn-hover: rgb(255 204 0 / 0.44);
+  color-scheme: light;
+}
+
+:root[data-theme='glass'][data-mode='light'] {
+  --wallpaper: radial-gradient(125% 125% at 50% 10%, #fff 40%, var(--hue) 100%);
+  --rim: inset 0 1px 0 rgb(255 255 255 / 0.9), inset 0 0 0 1px rgb(255 255 255 / 0.45), 0 0 0 1px rgb(30 40 70 / 0.08);
+  --lift: 0 12px 28px -14px rgb(30 40 70 / 0.4);
+  --well: rgb(30 40 70 / 0.1);
+  --paper: rgb(var(--panel) / 0.84);
+  --ink: #0c1524;
+  --ink-soft: #384358;
+  --rule: rgb(30 40 70 / 0.18);
+  --cream: #ffffff;
+  --led-bg: rgb(12 21 36 / 0.86);
+  --led-amber: #ffffff;
+  --led-green: #6bf0a6;
+  --led-green-off: rgb(107 240 166 / 0.06);
+  --led-red: #ff9486;
+  --led-red-off: rgb(255 148 134 / 0.06);
+  --dent: inset 0 1px 2px rgb(30 40 70 / 0.16), 0 1px 0 rgb(255 255 255 / 0.7);
+  --tile-ink: #0c1524;
+  --tile-tag: rgb(255 255 255 / 0.72);
+  --backdrop: rgb(40 50 80 / 0.42);
+  --modal-edge: 1px solid rgb(255 255 255 / 0.9);
+  --tab-bg: rgb(255 255 255 / 0.9);
+  --tab-ink: var(--pick-text);
+  --toast-bad: #bb1f18;
+  --toast-good: #09602f;
+  --sheen: linear-gradient(-75deg, rgb(255 255 255 / 0.05), rgb(255 255 255 / 0.55), rgb(255 255 255 / 0.05));
+  --sheen-tile: linear-gradient(-75deg, rgb(255 255 255 / 0) 34%, rgb(255 255 255 / 0.26) 50%, rgb(255 255 255 / 0) 66%);
+  --glass-button: inset 0 0 0 1.5px rgb(255 255 255 / 0.75), inset 0 2px 2px #fff, 0 0 0 1px rgb(30 40 70 / 0.1), 0 3px 3px -2px rgb(30 40 70 / 0.4);
+  --glass-button-down: inset 0 0 0 1.5px rgb(255 255 255 / 0.75), inset 0 2px 3px rgb(30 40 70 / 0.2), 0 0 0 1px rgb(30 40 70 / 0.1);
+  --bar: rgb(255 255 255 / 0.5);
+  --code-sum: #0a6b3f;
+  --code-qty: #2c3650;
+  --code-line: #4a5570;
+  --code-comment: #434e66;
+}
+
+/* The colours. --hue fills the wallpaper, --panel tints the panes, --pane is the same tint solid for
+   menus and dialogs, and --pick is the glow button. Dark violet is the start and needs no attribute. */
+:root[data-theme='glass'] { --hue: #6633ee; --panel: 38 32 66; --pane: #191533; --pick: #35e0a1; --pick-2: #5beadf; --pick-lip: #128a5f; --pick-text: #72f0c0; --pick-glow: 53 224 161; --bars: #7fb0ff; }
+:root[data-theme='glass'][data-tint='blue'] { --hue: #1557ff; --panel: 18 36 72; --pane: #0f1c3d; --pick: #4cc9ff; --pick-2: #8adfff; --pick-lip: #1a7fb0; --pick-text: #8fdcff; --pick-glow: 76 201 255; --bars: #7fb0ff; }
+:root[data-theme='glass'][data-tint='teal'] { --hue: #08a6b8; --panel: 12 52 60; --pane: #0b2a30; --pick: #2ee6d6; --pick-2: #7df2e6; --pick-lip: #128a80; --pick-text: #7df2e6; --pick-glow: 46 230 214; --bars: #5fe3d6; }
+:root[data-theme='glass'][data-tint='green'] { --hue: #16a34a; --panel: 16 52 34; --pane: #0e2a1b; --pick: #7ee04a; --pick-2: #b2f27e; --pick-lip: #4a9a22; --pick-text: #a6ec78; --pick-glow: 126 224 74; --bars: #7ee04a; }
+:root[data-theme='glass'][data-tint='pink'] { --hue: #e0359a; --panel: 66 24 54; --pane: #30122a; --pick: #ff86cf; --pick-2: #ffb2e2; --pick-lip: #b03a86; --pick-text: #ffb0df; --pick-glow: 255 134 207; --bars: #ff9ed8; }
+:root[data-theme='glass'][data-tint='red'] { --hue: #dc2f2f; --panel: 70 24 24; --pane: #331212; --pick: #ff8f7a; --pick-2: #ffb8a8; --pick-lip: #b04a38; --pick-text: #ffb3a3; --pick-glow: 255 143 122; --bars: #ff9d8a; }
+:root[data-theme='glass'][data-tint='orange'] { --hue: #ea7a12; --panel: 66 40 16; --pane: #2f1e0c; --pick: #ffb84d; --pick-2: #ffd58a; --pick-lip: #b37a1e; --pick-text: #ffcb7a; --pick-glow: 255 184 77; --bars: #ffc266; }
+:root[data-theme='glass'][data-tint='grey'] { --hue: #8b93a7; --panel: 38 40 46; --pane: #1c1d22; --pick: #e8eaf0; --pick-2: #ffffff; --pick-lip: #8a8e9a; --pick-text: #e8eaf0; --pick-glow: 232 234 240; --bars: #c7ccd8; }
+
+:root[data-theme='glass'][data-mode='light'] { --panel: 245 241 255; --pane: #f7f4ff; --pick: #5b2fd6; --pick-2: #6f45e6; --pick-lip: #43209f; --pick-text: #4f25c2; --pick-glow: 102 51 238; --bars: #6a3de8; }
+:root[data-theme='glass'][data-mode='light'][data-tint='blue'] { --panel: 238 245 255; --pane: #f4f8ff; --pick: #075fc4; --pick-2: #0a6ed8; --pick-lip: #054a9a; --pick-text: #0850a6; --pick-glow: 26 120 255; --bars: #0a74e0; }
+:root[data-theme='glass'][data-mode='light'][data-tint='teal'] { --panel: 232 249 250; --pane: #f1fbfc; --pick: #08707d; --pick-2: #0a7a8a; --pick-lip: #06525c; --pick-text: #07606c; --pick-glow: 8 166 184; --bars: #0a8fa0; }
+:root[data-theme='glass'][data-mode='light'][data-tint='green'] { --panel: 234 249 240; --pane: #f2fbf5; --pick: #0f7a3c; --pick-2: #107f3f; --pick-lip: #0a5a2c; --pick-text: #0c6a33; --pick-glow: 22 163 74; --bars: #15933f; }
+:root[data-theme='glass'][data-mode='light'][data-tint='pink'] { --panel: 254 238 248; --pane: #fff4fb; --pick: #bf1f7f; --pick-2: #d12a8f; --pick-lip: #8e155e; --pick-text: #ad1a72; --pick-glow: 224 53 154; --bars: #cf2a8c; }
+:root[data-theme='glass'][data-mode='light'][data-tint='red'] { --panel: 255 238 236; --pane: #fff5f3; --pick: #c0272a; --pick-2: #d23134; --pick-lip: #8f1a1c; --pick-text: #b02225; --pick-glow: 220 47 47; --bars: #d23134; }
+:root[data-theme='glass'][data-mode='light'][data-tint='orange'] { --panel: 255 243 228; --pane: #fff8ef; --pick: #a05006; --pick-2: #b05a08; --pick-lip: #743a04; --pick-text: #8f4705; --pick-glow: 234 122 18; --bars: #c8680c; }
+:root[data-theme='glass'][data-mode='light'][data-tint='grey'] { --panel: 240 242 246; --pane: #f6f7f9; --pick: #3d4657; --pick-2: #4c566a; --pick-lip: #2b3240; --pick-text: #3d4657; --pick-glow: 110 120 140; --bars: #56607a; }
+
+:root[data-theme='glass'] .ledger .tabs { background: var(--well); box-shadow: var(--dent); }
+:root[data-theme='glass'] .link.active { box-shadow: var(--rim); }
+/* Ink on paper turns into light on dark glass. */
+:root[data-theme='glass']:not([data-mode='light']) .step { border-color: var(--rule); background: rgb(255 255 255 / 0.1); box-shadow: none; }
+:root[data-theme='glass']:not([data-mode='light']) .stamp { border-color: var(--bad); color: var(--bad); }
+/* The chosen tab is a clear lens, whichever row it is in. */
+:root[data-theme='glass'][data-mode='light'] .marker { background: rgb(255 255 255 / 0.92); }
+:root[data-theme='glass'][data-mode='light'] .tab[aria-pressed='true'] { color: var(--accent-text); }
+/* These labels sit on the dark display. */
+:root[data-theme='glass'][data-mode='light'] button.box { --muted: #d5deec; }

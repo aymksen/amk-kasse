@@ -1,0 +1,208 @@
+/* Y2K: the computers and consoles of around 2004. An icy pinstriped wallpaper with orbit rings, chrome bars, a
+   backlit blue LCD for the total, fat gel scrollbars and one glossy sky-blue main button. The product keys stay
+   flat white cards, like the tiles of a console menu: colour comes only from the price pill, in the colour of the
+   category. Tables and forms stay plain on purpose, so counting and reading stay easy. Gradients are painted once
+   and never move, so this is as cheap as the default look. */
+:root[data-theme='y2k'],
+:root[data-theme='y2k'] .machine,
+:root[data-theme='y2k'] .ledger {
+  --bg: #e9effa;
+  --surface: #f4f7fd;
+  --surface-2: #e6ecf8;
+  --surface-3: #d4dcef;
+  --line: #a2b0cf;
+  --field: #ffffff;
+  --solid: #f4f7fd;
+  --text: #0b1238;
+  --muted: #3f4970;
+  --accent: #1ed8ef;
+  --accent-hover: #5ae6f6;
+  --accent-lip: #0b7f98;
+  --accent-text: #9c0e70;
+  --on-accent: #04203a;
+  --focus: #c4148f;
+  --key: #ffffff;
+  --key-hover: #f2f8ff;
+  --key-lip: #a9c9ee;
+  --key-edge: #ffffff;
+  --good: #0a6c41;
+  --good-bg: #c6f7dd;
+  --bad: #ae1138;
+  --bad-bg: #ffd5df;
+  --warn: #744e00;
+  --warn-bg: #fff0b3;
+  --warn-hover: #ffe88f;
+  --chart: #d6209a;
+  color-scheme: light;
+}
+
+:root[data-theme='y2k'] {
+  --sans: 'Lexend Variable', 'Segoe UI', system-ui, sans-serif;
+  --display: 'Unbounded Variable', 'Lexend Variable', 'Segoe UI', sans-serif;
+  --display-weight: 600;
+  --narrow: var(--sans);
+  --mono: var(--sans);
+  --wallpaper:
+    url('./img/y2k-wall.svg') center / cover no-repeat,
+    repeating-linear-gradient(0deg, rgb(255 255 255 / 0.5) 0 2px, rgb(255 255 255 / 0) 2px 4px),
+    linear-gradient(180deg, #b9d8fb 0, #dcebff 48%, #c9ecfb 100%);
+  --pinstripe: repeating-linear-gradient(0deg, #f3f7fd 0 2px, #e8eff9 2px 4px);
+  --chrome: linear-gradient(180deg, #fdfdff 0, #e2e8f4 46%, #bcc7dc 50%, #dfe6f2 100%);
+  --gel: linear-gradient(180deg, rgb(255 255 255 / 0.85) 0, rgb(255 255 255 / 0.28) 47%, rgb(255 255 255 / 0) 50%, rgb(255 255 255 / 0.2) 100%);
+  --foil: linear-gradient(100deg, #2fd4f2 0, #8d7dff 38%, #ff5fc4 70%, #ffc65c 100%);
+  --well: #cdd6ea;
+  --paper: #fbfcff;
+  --ink: #0b1238;
+  --ink-soft: #3f4970;
+  --rule: #a2b0cf;
+  --cream: #ffffff;
+  --led-bg: #a9def5;
+  --led-amber: #07265e;
+  --led-amber-off: rgb(7 38 94 / 0.075);
+  --led-green: #07265e;
+  --led-green-off: rgb(7 38 94 / 0.075);
+  --led-red: #8c0a3e;
+  --led-red-off: rgb(140 10 62 / 0.075);
+  --frame: #bdd3ee;
+  --frame-low: #a9c2e2;
+  --band: linear-gradient(180deg, #f6fbff 0, #dcecfc 100%);
+  --dent: inset 0 2px 4px rgb(7 11 42 / 0.45), 0 0 0 1.5px #7f8fb6, 0 0 0 3px #fff;
+  --dent-edge: 0 0 0 3.5px #a2b0cf;
+  --seam: #8c9bbf;
+  --seam-light: #fff;
+  --tile-ink: #0b1238;
+  --tile-tag: #e6eefa;
+  --backdrop: rgb(12 18 60 / 0.5);
+  --modal-edge: 1.5px solid #7f8fb6;
+  --tab-bg: #ff6ec2;
+  --tab-ink: #1c0318;
+  --toast-bad: #ae1138;
+  --toast-good: #0a6c41;
+  --tear: none;
+}
+
+:root[data-theme='y2k'] body { background: var(--wallpaper); }
+:root[data-theme='y2k'] .page { background: transparent; }
+/* The sky only where the screen is open. On a list it would run behind the text. One drawing, placed
+   by hand so nothing sits behind the wordmark or the form. */
+:root[data-theme='y2k'] .page.start { background: url('./img/y2k-sky.svg') center / cover no-repeat; }
+
+:root[data-theme='y2k'] h1 { font-size: 1.3125rem; letter-spacing: -0.01em; }
+:root[data-theme='y2k'] .mark b,
+:root[data-theme='y2k'] .mark i,
+:root[data-theme='y2k'] .receipt-head strong { font-family: var(--display); font-weight: var(--display-weight); letter-spacing: -0.01em; }
+:root[data-theme='y2k'] .num { letter-spacing: 0; }
+
+/* Flat white capsules with a thin blue line, so the one glossy button stands out. */
+:root[data-theme='y2k'] :is(.btn, .keycap):not(:disabled) {
+  background-image: none;
+  box-shadow: inset 0 0 0 1.5px #fff, 0 0 0 2px var(--frame), 0 2px 0 2px var(--frame-low);
+}
+:root[data-theme='y2k'] .btn { border-radius: 999px; }
+:root[data-theme='y2k'] :is(.btn, .keycap):active:not(:disabled) {
+  box-shadow: inset 0 0 0 1.5px #fff, 0 0 0 2px var(--frame);
+  transform: translateY(2px);
+}
+/* The bottom bar keeps its chrome and gel. */
+:root[data-theme='y2k'] .dock { --key: #eaf0fc; --key-hover: #f9fbff; --key-lip: #7f8fb6; }
+:root[data-theme='y2k'] .dock .btn:not(:disabled) {
+  background-image: var(--gel);
+  box-shadow: inset 0 1px 0 #fff, inset 0 -2px 3px rgb(11 18 56 / 0.16), 0 0 0 1.5px var(--lip), 0 2px 0 1.5px var(--lip);
+}
+:root[data-theme='y2k'] .dock .btn:active:not(:disabled) {
+  box-shadow: inset 0 2px 3px rgb(11 18 56 / 0.3), 0 0 0 1.5px var(--lip);
+  transform: translateY(2px);
+}
+:root[data-theme='y2k'] .btn:disabled { box-shadow: 0 0 0 1.5px var(--line); }
+:root[data-theme='y2k'] .btn.ghost:not(:disabled),
+:root[data-theme='y2k'] .btn.ghost:active:not(:disabled) { background-image: none; box-shadow: none; transform: none; }
+:root[data-theme='y2k'] .btn.danger { color: var(--bad); }
+/* The main button is the one sky-blue gel capsule on the screen: a bright top half and a glow at the bottom. */
+:root[data-theme='y2k'] .btn.primary:not(:disabled) {
+  --lip: #1277bd;
+  background-image:
+    linear-gradient(180deg, rgb(255 255 255 / 0.82) 0, rgb(255 255 255 / 0.3) 48%, rgb(255 255 255 / 0) 50%),
+    radial-gradient(ellipse 90% 70% at 50% 110%, #b6f4ff 0, rgb(182 244 255 / 0) 100%),
+    linear-gradient(180deg, #2bb1ee 0, #1b8ee0 100%);
+  box-shadow: inset 0 0 0 1.5px rgb(255 255 255 / 0.55), 0 0 0 2px var(--lip), 0 2px 0 2px var(--lip);
+  color: #03203f;
+}
+:root[data-theme='y2k'] .btn.primary:hover:not(:disabled) {
+  background-image:
+    linear-gradient(180deg, rgb(255 255 255 / 0.9) 0, rgb(255 255 255 / 0.42) 48%, rgb(255 255 255 / 0.08) 50%),
+    radial-gradient(ellipse 90% 70% at 50% 110%, #d2f9ff 0, rgb(210 249 255 / 0) 100%),
+    linear-gradient(180deg, #4cc2f4 0, #2c9fe8 100%);
+}
+:root[data-theme='y2k'] .btn.primary:active:not(:disabled) { box-shadow: inset 0 0 0 1.5px rgb(255 255 255 / 0.55), 0 0 0 2px var(--lip); }
+
+/* Product keys are flat white cards in a thin frame, and only the price pill carries the colour of the category.
+   The one under the finger gets a sky-blue ring. */
+:root[data-theme='y2k'] div.grid { padding: 3px 4px 6px 3px; }
+:root[data-theme='y2k'] button.tile,
+:root[data-theme='y2k'] button.tile:hover { background: #fff; }
+:root[data-theme='y2k'] button.tile { box-shadow: 0 0 0 2px var(--frame), 0 3px 0 2px var(--frame-low); }
+:root[data-theme='y2k'] button.tile:hover { box-shadow: 0 0 0 3px #27b7f0, 0 3px 0 3px #1b8fd0; }
+:root[data-theme='y2k'] button.tile:active { box-shadow: 0 0 0 3px #27b7f0; transform: translateY(2px); }
+:root[data-theme='y2k'] button.tile.out { background: var(--surface-2); }
+:root[data-theme='y2k'] .window { background: transparent; box-shadow: none; }
+:root[data-theme='y2k'] .tile .price { padding: 0 9px; border-radius: 999px; background: var(--face); }
+:root[data-theme='y2k'] span.count { background: #ff6ec2; box-shadow: 0 0 0 2px #fff; color: #1c0318; }
+
+/* The total is a backlit blue LCD, as on a minidisc player, set into a chrome bezel. */
+:root[data-theme='y2k'] .led:not(.plain) {
+  background: repeating-linear-gradient(0deg, rgb(7 38 94 / 0.03) 0 1px, transparent 1px 3px), radial-gradient(ellipse at 50% 30%, #c6edfb 0, var(--led-bg) 72%);
+  box-shadow: inset 0 2px 5px rgb(7 38 94 / 0.45), 0 0 0 2px #7f8fb6, 0 0 0 5px #e4eaf5, 0 0 0 6px #8c9bbf, 0 2px 0 6px #8c9bbf;
+}
+
+:root[data-theme='y2k'] .dock { background: var(--foil) top / 100% 2px no-repeat, var(--chrome); box-shadow: 0 -1.5px 0 #8c9bbf; }
+:root[data-theme='y2k'] nav.side { background: var(--pinstripe); box-shadow: 1.5px 0 0 #8c9bbf; }
+:root[data-theme='y2k'] .register { background: var(--pinstripe); box-shadow: inset 1.5px 0 0 #8c9bbf, inset 3px 0 0 #fff; }
+
+:root[data-theme='y2k'] .tabs { background: #fff; }
+:root[data-theme='y2k'] .ledger .tabs { background: #fff; box-shadow: var(--dent), var(--dent-edge); }
+:root[data-theme='y2k'] .marker { background-image: linear-gradient(180deg, rgb(255 255 255 / 0.34) 0, rgb(255 255 255 / 0.08) 47%, rgb(255 255 255 / 0) 50%); box-shadow: 0 0 0 1px rgb(11 18 56 / 0.4); }
+:root[data-theme='y2k'] .link.active { background-image: var(--gel); box-shadow: 0 0 0 1.5px #b0127f; }
+
+/* Solid plain panels for reading and counting. */
+:root[data-theme='y2k'] .card,
+:root[data-theme='y2k'] .stats { border: 2px solid var(--frame); box-shadow: 0 2px 0 var(--frame-low); }
+/* The receipt and the sign-in form are white letters with a pale blue heading. */
+:root[data-theme='y2k'] .slip {
+  border: 0;
+  background: #fff;
+  box-shadow: inset 0 0 0 2px #fff, 0 0 0 2px var(--frame), 0 3px 0 2px var(--frame-low);
+}
+:root[data-theme='y2k'] .sheet { padding: 26px; }
+:root[data-theme='y2k'] .tray { padding: 4px 6px 8px; }
+/* The heading of a receipt or a dialog is the title bar of a window. */
+:root[data-theme='y2k'] .receipt-head {
+  padding: 10px 10px 8px;
+  border-bottom: 1.5px solid #8c9bbf;
+  border-radius: 22px 22px 0 0;
+  background: var(--chrome);
+}
+:root[data-theme='y2k'] .receipt-head strong { color: #0b1238; }
+:root[data-theme='y2k'] .receipt-head span { color: var(--muted); }
+:root[data-theme='y2k'] .receipt .line:not(:last-child) { border-bottom: 1px solid #e2ecfa; }
+:root[data-theme='y2k'] .step { border: 2px solid var(--frame); background: #fff; box-shadow: 0 2px 0 var(--frame-low); color: #1668d9; }
+:root[data-theme='y2k'] .backdrop .modal { border: 0; background: var(--solid); box-shadow: 0 0 0 2px var(--frame), 0 0 0 6px rgb(255 255 255 / 0.6), var(--modal-shadow); }
+:root[data-theme='y2k'] .modal > header { border-bottom: 1.5px solid #8c9bbf; background: var(--chrome); }
+:root[data-theme='y2k'] .modal > .body { background: var(--solid); }
+:root[data-theme='y2k'] .input { border: 2px solid var(--frame); box-shadow: inset 0 2px 3px rgb(11 18 56 / 0.08); }
+:root[data-theme='y2k'] .input:focus { border-color: var(--focus); outline: 2px solid var(--focus); outline-offset: 0; }
+:root[data-theme='y2k'] .chip { border: 2px solid var(--frame); background: #fff; }
+:root[data-theme='y2k'] .table thead th { border-bottom: 2px solid var(--frame); background: var(--band); color: var(--text); }
+:root[data-theme='y2k'] .table-wrap { border-radius: 0 0 20px 20px; }
+:root[data-theme='y2k'] .card > .table-wrap:first-child { border-radius: 20px; }
+:root[data-theme='y2k'] :is(button.box, .dots) { box-shadow: inset 0 0 0 2px #fff, 0 0 0 2px var(--frame); }
+:root[data-theme='y2k'] button.box.active { outline: 3px solid #ff6ec2; outline-offset: 2px; }
+
+/* Fat gel scrollbars. */
+:root[data-theme='y2k'] ::-webkit-scrollbar { width: 16px; height: 16px; }
+:root[data-theme='y2k'] ::-webkit-scrollbar-track { border-radius: 8px; background: repeating-linear-gradient(90deg, #dfe8f6 0 2px, #eef3fb 2px 4px); box-shadow: inset 0 0 0 1px #b6c5e0; }
+:root[data-theme='y2k'] ::-webkit-scrollbar-thumb {
+  border: 1px solid #1277bd;
+  border-radius: 8px;
+  background: linear-gradient(90deg, rgb(255 255 255 / 0.7) 0, rgb(255 255 255 / 0.2) 48%, rgb(255 255 255 / 0) 50%), #2bb1ee;
+}
+:root[data-theme='y2k'] ::-webkit-scrollbar-button { display: none; }

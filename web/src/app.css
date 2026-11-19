@@ -1,0 +1,300 @@
+/* Two materials: the till is a dark machine with keys and an LED window, the OBK area is a paper
+   cash book. Depth comes from hard edges only. No blur, and only `transform` ever moves, so a
+   weak PC stays fast. */
+:root,
+.machine {
+  --bg: #12100e;
+  --surface: #1c1916;
+  --surface-2: #27231f;
+  --surface-3: #35302a;
+  --line: #3b352e;
+  --field: #0c0b09;
+  --text: #f4ecdd;
+  --muted: #ab9f8e;
+  --accent: #ffb224;
+  --accent-hover: #ffc14d;
+  --accent-lip: #a96d05;
+  --accent-text: #ffb224;
+  --on-accent: #241703;
+  --focus: #ffb224;
+  --key: #2e2a25;
+  --key-hover: #39342e;
+  --key-lip: #050403;
+  --key-edge: rgb(255 255 255 / 0.08);
+  --good: #63d695;
+  --good-bg: #17331f;
+  --bad: #ff8570;
+  --bad-bg: #3e1b14;
+  --warn: #ffb224;
+  --warn-bg: #3b2a0c;
+  --warn-hover: #4a3510;
+  --chart: #dd9d2b;
+  color: var(--text);
+  color-scheme: dark;
+}
+
+.ledger {
+  --bg: #e9e1d0;
+  --surface: #fbf7ec;
+  --surface-2: #f1eadb;
+  --surface-3: #e0d7c4;
+  --line: #d3c8b2;
+  --field: #fffdf6;
+  --text: #221c15;
+  --muted: #6c6152;
+  --accent: #a55c05;
+  --accent-hover: #b4690b;
+  --accent-lip: #6f3f03;
+  --accent-text: #a55c05;
+  --on-accent: #fffaf0;
+  --focus: #221c15;
+  --key: #fbf7ec;
+  --key-hover: #fffdf6;
+  --key-lip: #b5a88f;
+  --key-edge: rgb(255 255 255 / 0.8);
+  --good: #18713f;
+  --good-bg: #d9ecd8;
+  --bad: #b5301b;
+  --bad-bg: #f6d9cf;
+  --warn: #8a5703;
+  --warn-bg: #f4e3b8;
+  --warn-hover: #efd99f;
+  --chart: #b4730f;
+  color: var(--text);
+  color-scheme: light;
+}
+
+:root {
+  --well: #0a0907;
+  --paper: #f6f0e2;
+  --ink: #221c15;
+  --ink-soft: #6c6152;
+  --rule: #cdc2ad;
+  --cream: #fff6e5;
+  --radius: 8px;
+  --radius-lg: 12px;
+  --tap: 56px;
+  /* Every style sets these four. Display is for headings, the receipt head, labels on the display and
+     stamps; narrow is for a product name too long for its tile. */
+  --sans: 'Barlow Semi Condensed', 'Segoe UI', system-ui, sans-serif;
+  --display: 'Barlow Condensed', 'Barlow Semi Condensed', 'Segoe UI', sans-serif;
+  --display-weight: 800;
+  --narrow: 'Barlow Condensed', 'Barlow Semi Condensed', 'Segoe UI', sans-serif;
+  --mono: 'JetBrains Mono Variable', Consolas, monospace;
+  --hair: 1px;
+  /* The display. Here it is an LED; a style can make it an LCD or anything else. */
+  --led-bg: #0a0907;
+  --led-amber: #ffb224;
+  --led-amber-off: rgb(255 178 36 / 0.07);
+  --led-green: #6dea9e;
+  --led-green-off: rgb(109 234 158 / 0.07);
+  --led-red: #ff7a61;
+  --led-red-off: rgb(255 122 97 / 0.07);
+  /* Windows cut into the casing, and the joins between its panels. */
+  --dent: inset 0 2px 0 #000, 0 0 0 1px #000;
+  --dent-edge: 0 1px 0 1px rgb(255 255 255 / 0.07);
+  --seam: #000;
+  --seam-light: rgb(255 255 255 / 0.05);
+  /* Product keys, whose faces come from the category colour. */
+  --tile-ink: #fff6e5;
+  --tile-tag: rgb(0 0 0 / 0.35);
+  /* Dialogs, messages and the open tab of the OBK book. */
+  --backdrop: rgb(8 6 4 / 0.78);
+  --modal-edge: 1px solid #000;
+  --modal-shadow: inset 0 1px 0 rgb(255 255 255 / 0.07);
+  --toast-bad: #ffcabd;
+  --toast-good: #bdf2cf;
+  --tab-bg: #e9e1d0;
+  --tab-ink: #221c15;
+  --tear: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='7'%3E%3Cpath d='M0 0h14L7 7z' fill='%23f6f0e2'/%3E%3C/svg%3E");
+}
+
+* { box-sizing: border-box; }
+
+html, body, #app { height: 100%; margin: 0; }
+
+body {
+  background: var(--bg);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.4;
+  overflow: hidden;
+}
+
+h1, h2, h3, p { margin: 0; }
+h1 { font-family: var(--display); font-size: 1.625rem; font-stretch: 112%; font-weight: var(--display-weight); letter-spacing: -0.015em; line-height: 1.15; }
+h2 { font-size: 1.125rem; font-weight: 700; }
+h3 { font-family: var(--mono); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+
+button, input, select, textarea { font: inherit; color: inherit; }
+button { cursor: pointer; touch-action: manipulation; }
+button:disabled { cursor: default; }
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+.num { font-family: var(--mono); font-variant-numeric: tabular-nums; letter-spacing: -0.02em; }
+.muted { color: var(--muted); }
+.good { color: var(--good); }
+.bad { color: var(--bad); }
+.small { font-size: 0.8125rem; }
+.right { text-align: right; }
+.grow { flex: 1; min-width: 0; }
+.row { display: flex; align-items: center; gap: 12px; }
+.stack { display: flex; flex-direction: column; gap: 12px; }
+.spread { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.wrap { flex-wrap: wrap; }
+
+/* Keys. A hard lip under the face, pressing moves the face down onto it. */
+.btn, .keycap {
+  --face: var(--key);
+  --face-hover: var(--key-hover);
+  --lip: var(--key-lip);
+  --edge: var(--key-edge);
+  border: 0;
+  border-radius: var(--radius);
+  background: var(--face);
+  box-shadow: inset 0 1px 0 var(--edge), 0 0 0 1px var(--lip), 0 3px 0 1px var(--lip);
+}
+.btn:hover:not(:disabled), .keycap:hover:not(:disabled) { background: var(--face-hover); }
+.btn:active:not(:disabled), .keycap:active:not(:disabled) {
+  box-shadow: inset 0 1px 0 var(--edge), 0 0 0 1px var(--lip), 0 1px 0 1px var(--lip);
+  transform: translateY(2px);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  margin-bottom: 3px;
+  padding: 0 16px;
+  font-weight: 620;
+  white-space: nowrap;
+}
+.btn:disabled { background: var(--surface-2); box-shadow: 0 0 0 1px var(--line); color: var(--muted); }
+.btn.big { min-height: var(--tap); padding: 0 24px; font-size: 1.0625rem; }
+.btn.block { width: 100%; }
+.btn.primary:not(:disabled) {
+  --face: var(--accent);
+  --face-hover: var(--accent-hover);
+  --lip: var(--accent-lip);
+  --edge: rgb(255 255 255 / 0.3);
+  color: var(--on-accent);
+  font-weight: 760;
+}
+.btn.danger { color: var(--bad); }
+.btn.ghost { margin-bottom: 0; background: transparent; box-shadow: none; }
+.btn.ghost:hover:not(:disabled) { background: var(--surface-2); }
+.btn.ghost:active:not(:disabled) { background: var(--surface-3); box-shadow: none; transform: none; }
+
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: var(--radius);
+  background: transparent;
+  color: var(--muted);
+}
+.icon-btn:hover { background: var(--surface-2); color: var(--text); }
+
+.chip {
+  min-height: 40px;
+  padding: 0 14px;
+  border: var(--hair) solid var(--line);
+  border-radius: 6px;
+  background: var(--surface);
+  color: var(--text);
+  font-weight: 600;
+  white-space: nowrap;
+}
+.chip:hover { background: var(--surface-2); }
+.chip:active { background: var(--surface-3); }
+
+/* Paper with a torn edge: receipts and slips on the dark machine. */
+.slip { position: relative; background: var(--paper); color: var(--ink); }
+.slip::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -7px;
+  height: 7px;
+  background: var(--tear) repeat-x;
+}
+
+/* Forms */
+.field { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.field > span { font-size: 0.8125rem; color: var(--muted); font-weight: 560; }
+.input {
+  width: 100%;
+  min-height: 44px;
+  padding: 0 12px;
+  border: var(--hair) solid var(--line);
+  border-radius: 6px;
+  background: var(--field);
+}
+.input.big { min-height: var(--tap); font-size: 1.125rem; }
+.input:focus { outline: 2px solid var(--focus); outline-offset: -1px; border-color: transparent; }
+textarea.input { padding: 10px 12px; resize: vertical; }
+.check { display: flex; align-items: center; gap: 10px; min-height: 44px; }
+.check input { width: 20px; height: 20px; accent-color: var(--accent); }
+
+/* Data */
+.card { border: var(--hair) solid var(--line); border-radius: 6px; background: var(--surface); }
+.card.pad { padding: 16px; }
+.table-wrap { overflow-x: auto; }
+table.table { width: 100%; border-collapse: collapse; font-size: 0.9375rem; }
+.table th {
+  padding: 10px 12px;
+  border-bottom: 2px solid var(--text);
+  font-family: var(--mono);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-align: left;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.table td { padding: 10px 12px; border-bottom: var(--hair) solid var(--line); }
+.table tr:last-child td { border-bottom: 0; }
+.table th.right, .table td.right { text-align: right; }
+.table tr.click { cursor: pointer; }
+.table tr.click:hover td { background: var(--surface-2); }
+
+/* A row of figures in one sheet, split by rules instead of separate cards. */
+.stats {
+  display: grid;
+  gap: var(--hair);
+  border: var(--hair) solid var(--line);
+  border-radius: 6px;
+  background: var(--line);
+  overflow: hidden;
+}
+
+.tag {
+  display: inline-block;
+  padding: 1px 7px;
+  border-radius: 4px;
+  background: var(--surface-3);
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+}
+.tag.warn { background: var(--warn-bg); color: var(--warn); }
+.tag.bad { background: var(--bad-bg); color: var(--bad); }
+.tag.good { background: var(--good-bg); color: var(--good); }
+
+.empty { padding: 32px 16px; color: var(--muted); text-align: center; }
+
+::-webkit-scrollbar { width: 12px; height: 12px; }
+::-webkit-scrollbar-thumb { background: var(--surface-3); border: 3px solid transparent; background-clip: padding-box; border-radius: 8px; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
