@@ -1,5 +1,7 @@
 <script>
   import { onMount } from 'svelte';
+  import Heart from 'lucide-svelte/icons/heart';
+  import Info from 'lucide-svelte/icons/info';
   import ShieldCheck from 'lucide-svelte/icons/shield-check';
   import AmountDialog from '../components/AmountDialog.svelte';
   import BoardButton from '../components/BoardButton.svelte';
@@ -36,6 +38,14 @@
     { id: 'stock', label: t('open.stepStock') },
     { id: 'cash', label: t('open.stepCash') },
   ]);
+
+  // Who made the till, behind a faint icon in the corner. The note closes by itself after a few seconds.
+  let showCredit = $state(false);
+  $effect(() => {
+    if (!showCredit) return;
+    const timer = setTimeout(() => (showCredit = false), 6000);
+    return () => clearTimeout(timer);
+  });
 
   let clock = $state(time(Date.now()));
   onMount(() => {
@@ -167,6 +177,17 @@
       {/if}
     </div>
   </div>
+
+  <div class="credit">
+    {#if showCredit}
+      <p class="note" role="status">
+        {t('start.madeWith')} <Heart size={12} fill="currentColor" role="img" aria-label="♥" /> {t('start.madeBy')}
+      </p>
+    {/if}
+    <button type="button" class="info" aria-label={t('start.about')} aria-expanded={showCredit} onclick={() => (showCredit = !showCredit)}>
+      <Info size={16} />
+    </button>
+  </div>
 </main>
 {/if}
 
@@ -191,9 +212,45 @@
     --tuck: calc(var(--logo) * 0.2);
     display: flex;
     height: 100%;
-    padding: 64px 16px 16px;
+    padding: 64px 16px 36px;
     overflow-y: auto;
   }
+  /* Who made it: a faint icon in the corner that only shows its note when tapped. */
+  .credit {
+    position: fixed;
+    right: 8px;
+    bottom: 8px;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .info {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: none;
+    color: var(--muted);
+    cursor: pointer;
+    opacity: 0.35;
+  }
+  .info:hover,
+  .info[aria-expanded='true'] { opacity: 0.9; }
+  .note {
+    margin: 0;
+    padding: 6px 12px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--surface-2);
+    color: var(--text);
+    font-size: 13px;
+    white-space: nowrap;
+  }
+  .note :global(svg) { margin: 0 1px; color: var(--bad); vertical-align: -1px; }
   .top {
     position: fixed;
     inset: 0 0 auto 0;

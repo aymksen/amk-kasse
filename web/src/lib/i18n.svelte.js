@@ -71,6 +71,9 @@ const strings = {
   // Start of shift
   'start.title': ['Schicht starten', 'Start your shift'],
   'start.who': ['Wer arbeitet heute?', 'Who is working tonight?'],
+  'start.about': ['Wer hat die Kasse gemacht?', 'Who made this till?'],
+  'start.madeWith': ['Mit', 'Made with'],
+  'start.madeBy': ['gemacht von Aymen, Zimmer 054', 'by Aymen, room 054'],
   'start.room': ['Zimmernummer', 'Room number'],
   'start.name': ['Dein Name', 'Your name'],
   'start.suggest': ['Warst du das?', 'Was that you?'],

@@ -1,5 +1,7 @@
 # AMK Kasse
 
+*Made with ♥ by Aymen, room 054*
+
 A till for a small bar, made for the student bar at the Albertus Magnus dorm in Münster. It sells drinks and snacks by touch or barcode scanner, lends cues and darts for a deposit, counts stock, and gives the bar team a PIN-protected area for products, stock, money and reports.
 
 It runs offline on one Windows PC: one program, one data folder, nothing to install.
